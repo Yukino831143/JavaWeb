@@ -1,0 +1,88 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+
+.h-user{
+	/*background-color: red;
+	border:1px solid blue;*/
+	margin-left:50px;
+	margin-top:50px;
+	overflow: hidden;
+
+}
+.face{
+	position: relative;
+	float:left;
+	width:64px;
+	height:64px;
+	border-radius: 48px;
+	/*background-image: url("http://i2.hdslb.com/bfs/face/5f60d345059b82f0878984d9f9133f45b33b82be.jpg_64x64.jpg");*/
+	/*background-repeat: no-repeat;*/
+}
+.headline{
+	float:left;
+	margin-left:30px;
+	margin-top:10px;
+}
+.headline span{
+	line-height: 21px;
+	font-size:16px;
+
+}
+.bold{
+	font-weight: 700;
+}
+
+.headline .line1{
+	margin-bottom: 10px;
+}
+
+.data-block{
+	overflow: hidden;
+}
+
+.latestAv{
+	width: 170px;
+	height:210px;
+	margin-left:50px;
+	margin-top: 20px;
+	
+	float:left;
+}
+
+.cover{
+	width:160px;
+	height:100px;
+	/*background-image: url("http://i1.hdslb.com/bfs/archive/77281e278630c145e11cddabac4ff63325e67830.jpg");*/
+	/*background-repeat: no-repeat;*/
+}
+
+.latestAv>.cover{
+	margin-top:10px;
+}
+.latestAv>.desc{
+	margin-top:10px;
+}
+
+.data-block .title{
+	
+	margin-top:50px;
+	margin-left:25px;
+}
+.data-block .avData{
+	float:left;
+}
+
+.data-block .avData .numbers{
+	margin-top:10px;
+	margin-left:25px;
+}
+.data-block .avData .desc{
+	width: 1000px;
+	height:50px;
+	margin-top:10px;
+	margin-left:25px;
+}
+

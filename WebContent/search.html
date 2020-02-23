@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/style.css"> 
+<link rel="stylesheet" type="text/css" href="css/level.css">
+<!-- 引用外面资源不能使用本地盘，要使用在当前web应用为基础 -->
+<link rel="stylesheet" href="css/personal-auth.css">
+<link rel="stylesheet" type= "text/css" href="css/search-wrap.css">
+</head>
+<body>
+	<!-- 下面是搜索栏代码 -->
+	<div class="search-wrap"> 
+		<div class="logo-input clearfix">
+			<a href="" class="search-logo"></a>
+			<div class="search-block">
+				<div class="input-wrap">
+					<input id="search-keyword" type="text" maxlength="100" autocomplete="off" value="hanser">
+				</div>
+				<div class="search-button">
+					<i class="icon-search-white"></i>
+					<span class="search-text">搜索</span>
+				</div>
+				<div class="search-loupe"></div>
+			</div>
+		</div>
+	</div>
+	<!-- 上面是搜索栏代码 -->
+	<div id="container"></div>
+	<!-- <form>
+		up名字:<input type="text" name="upName">
+		<input type="button" id="submit" value="提交">
+		这里如果用json请求数据，提交按钮 type设置为button 而不是 submit,使用submit无法获取文本框内容
+	</form> -->
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="js/submit.js"></script>
+
+	<div class="h-user">
+		<div class="face">
+			<span class="face-subicon"></span>
+		</div>
+		<a href="#" target="_blank" class="m-level"></a>
+		<div class="headline">
+			<div class="line1">
+				<span class="name"><span class="bold"></span></span>
+				<span class="level"><span class="bold">level:</span></span>
+				<span class="uid"><span class="bold">uid:</span><span id="uid"></span></span>
+				<span class="following"><span class="bold">关注数:</span><span id="following"></span></span>
+				<span class="follower"><span class="bold">粉丝数:</span><span id="follower"></span></span>					
+				<span class="view"><span class="bold">播放量:</span><span id="view"></span></span>
+				<span class="certification"><span class="bold">认证：</span><span id="certification"></span></span>
+				<span class="liveStatus"><span class="bold">直播状态:</span><span id="liveStatus"></span></span>
+				
+			</div>
+			<div class="line2">
+				<span class="sign"><span class="bold">个性签名:</span><span id="sign">.......</span></span>
+			</div>
+		</div>			
+	</div>
+
+	<div class="data-block">
+		<div class="latestAv">
+			<div class="head"><span class="bold">最新投稿:</span></div>
+			<div class="cover"></div>
+			<div class="desc"><span >……</span></div>
+		</div>
+		
+		<div class="avData">
+			<div class="title"><span class="bold">标题:</span>
+				<span id="title"></span>
+			</div>
+			<div class="numbers">
+				<span class="aid"><span class="bold">av:</span><span id="aid"></span></span>
+				<span class="danmaku"><span class="bold">弹幕数:</span><span id="danmaku"></span></span>
+				<span class="like"><span class="bold">点赞:</span><span id="like"></span></span>
+				<span class="coin"><span class="bold">硬币数:</span><span id="coin"></span></span>
+				<span class="favorite"><span class="bold">收藏数:</span><span id="favorite"></span></span>
+				<span class="share"><span class="bold">分享数:</span><span id="share"></span></span>
+			</div>
+			<div class="desc">
+				<span class="aid"><span class="bold">简介:</span><span id="desc"></span></span>
+			</div>
+		</div>			
+	</div>
+</body>
+</html>

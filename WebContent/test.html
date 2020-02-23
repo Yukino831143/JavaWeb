@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+	.search-wrap{
+		height:44px;
+		margin:0 auto;
+		position:relative;
+		width:587px;
+		background-color: aqua;
+	}
+	.search-wrap .search-logo{
+		background-image:url("D:/software/Eclipse/eclipse workspace/bilibili/WebContent/asserts/icon.png");
+		background-position: -261px -72px;
+		width:131px;
+		height:35px;
+		float:left;
+		margin-top:7px;
+	}
+	.search-wrap .search-block {
+    width: 430px;
+    float: left;
+    margin-left: 26px;
+	}
+	.search-wrap .search-block .input-wrap {
+    position: relative;
+    background: #fff;
+    border-radius: 4px;
+    float: left;
+    width: 330px;
+    margin-right: 10px;
+}
+	
+.search-wrap .search-block .input-wrap input {
+	height: 18px;
+	box-shadow: none;
+	padding: 11px 15px;
+	background: transparent;
+	width: 296px;
+	border: 2px solid #ccd0d7;
+	border-radius: 4px;
+	color: #222;
+	/* margin-left:20px; */
+	
+}
+.search-wrap .search-block .search-button {
+    cursor: pointer;
+    float: left;
+    color: #fff;
+    background: #00a1d6;
+    font-size: 16px;
+    letter-spacing: 2px;
+    line-height: 42px;
+    text-align: center;
+    width: 90px;
+	border-radius: 4px;	
+}
+.search-wrap .search-block .search-button .icon-search-white {
+    background-image: url("D:/software/Eclipse/eclipse workspace/bilibili/WebContent/asserts/icon.png");
+    background-position: -148px -327px;
+    width: 18px;
+    vertical-align: middle;
+    margin-top: -2px;
+    height: 19px;
+    display: inline-block;
+}
+/* .clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    overflow: hidden;
+} */
+
+</style>  
+</head>
+<body>
+	<div class="search-wrap">
+		<div class="logo-input clearfix">
+			<a href="" class="search-logo"></a>
+			<div class="search-block">
+				<div class="input-wrap">
+					<input id="search-keyword" type="text" maxlength="100" autocomplete="off" value="hanser">
+				</div>
+				<div class="search-button">
+					<i class="icon-search-white"></i>
+					<span class="search-text">搜索</span>
+				</div>
+				<div class="search-loupe"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
