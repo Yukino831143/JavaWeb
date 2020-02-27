@@ -11,7 +11,9 @@ headers = {
 class Bilibili():
     def __init__(self):
         self.api = ['https://api.bilibili.com/x/space/acc/info?mid=','https://api.bilibili.com/x/relation/stat?vmid=','https://api.bilibili.com/x/space/upstat?mid=','https://api.live.bilibili.com/room/v1/Room/getRoomInfoOld?mid=','https://api.bilibili.com/x/space/arc/search?mid=','https://api.bilibili.com/x/web-interface/view?aid=']        
-        self.keyword = {'keyword':sys.argv[1]}
+        #self.keyword = {'keyword':sys.argv[1]}
+        self.keyword = {'keyword':self.getkeyParameter()}
+        ##print(self.keyword)
         #self.url = "https://search.bilibili.com/upuser?keyword=%E6%B3%9B%E5%BC%8F"
         self.url = "https://search.bilibili.com/upuser?" + parse.urlencode(self.keyword)
         self.name = "" #up
@@ -44,7 +46,12 @@ class Bilibili():
         self.allInfoDic['latestAvDic'] = self.latestAvDic
         jsonStr = json.dumps(self.allInfoDic,ensure_ascii=False)
         print(jsonStr)
-        
+    def getkeyParameter(self):
+        filePath = sys.argv[1]
+        with open(filePath,"r") as file:
+            jsonStr = file.read()
+            data = json.loads(jsonStr)
+            return data['keyword']
         
     def run(self):
         #print(self.url)
