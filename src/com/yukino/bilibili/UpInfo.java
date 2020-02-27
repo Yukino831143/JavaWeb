@@ -149,12 +149,12 @@ public class UpInfo {
 
 
 	public String spiderData(String keyword) {
-	       	String[] args1 = new String[] { "python","E:\\private\\python\\bilibili\\searchUser.py", keyword }; 
+	       	String[] args1 = new String[] { "/Library/Frameworks/Python.framework/Versions/3.8/bin/python3","/Users/yukino/Desktop/git_test/bilibili/JavaWeb/src/com/yukino/bilibili/searchUser.py", keyword }; 
 	        Process pr;
 	        String lines="";
 	        try {
 	            pr = Runtime.getRuntime().exec(args1); //最核心的函数
-	            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream(), "gbk"));
+	            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream(), "utf-8"));
 	            String line;
 	            
 	            while ((line = in.readLine()) != null) {

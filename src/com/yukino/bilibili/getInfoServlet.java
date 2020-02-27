@@ -37,7 +37,9 @@ public class getInfoServlet extends HttpServlet {
 		System.out.println(keyword);
 		response.setContentType("text/html;charset=utf-8");
 		UpInfo temp = new UpInfo();
+		System.out.println("python开始");
 		String info = temp.spiderData(keyword);
+		System.out.println("python结束");
 		response.getWriter().println(info);
 		System.out.println(info);
 //		UpInfo up = JSON.parseObject(info,UpInfo.class);//反序列构成对象
