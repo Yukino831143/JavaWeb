@@ -1,7 +1,12 @@
 package com.yukino.bilibili;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -167,5 +172,22 @@ public class UpInfo {
 	        }
 	        return lines;
 		}
+	public String writeJson2file(String filepath,String keyword) throws UnsupportedEncodingException,IOException{
+		
+		System.out.println("filepath="+filepath+" "+"keyword="+keyword);
+		File jsonFile = new File(filepath);
+		String absolutePath = jsonFile.getAbsolutePath();
+		System.out.println(absolutePath);
+		if(!jsonFile.exists()) {
+			jsonFile.createNewFile();
+		}
+		FileOutputStream fos = new FileOutputStream(jsonFile);
+		OutputStreamWriter osw = new OutputStreamWriter(fos,"UTF-8");
+		String jsonStr = "{\"keyword\":"+"\""+keyword+"\""+"}";
+		osw.write(jsonStr);
+		//fos.close();
+		osw.close();
+		return absolutePath;
+	}
 	
 }
