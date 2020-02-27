@@ -125,5 +125,8 @@ class Bilibili():
         self.printInfo()
         
 if __name__=='__main__':
-    bilibili=Bilibili()
-    bilibili.run()
+    try:
+        bilibili=Bilibili()
+        bilibili.run()
+    except Exception as e:
+        print(e)
