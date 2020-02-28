@@ -21,4 +21,8 @@
   	<servlet-name>freemaker</servlet-name>
   	<url-pattern>*.ftl</url-pattern>
   </servlet-mapping>
+  
+  <listener>
+  	<listener-class>com.yukino.bilibili.VisitsListener</listener-class>
+  </listener>
 </web-app>
