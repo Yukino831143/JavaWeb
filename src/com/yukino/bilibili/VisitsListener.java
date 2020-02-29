@@ -10,6 +10,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Application Lifecycle Listener implementation class VisitsListener
@@ -35,7 +36,13 @@ public class VisitsListener implements ServletContextListener, ServletRequestLis
 	/**
      * @see ServletRequestListener#requestInitialized(ServletRequestEvent)
      */
-    public void requestInitialized(ServletRequestEvent sre)  { 
+    public void requestInitialized(ServletRequestEvent sre)  {
+    	HttpServletRequest request = (HttpServletRequest)sre.getServletRequest();
+        String url = request.getRequestURL().toString();
+        //ajaxµÄÇëÇó²»Ëã
+        if(url.endsWith("/rt") == true) {
+            return;
+        }
          List<String> timeList = (List)sre.getServletContext().getAttribute("timeList");
          List<Integer> valueList = (List)sre.getServletContext().getAttribute("valueList");
          Date date = new Date();
