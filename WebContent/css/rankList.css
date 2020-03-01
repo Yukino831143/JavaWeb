@@ -1,0 +1,154 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+ul{
+    display:block;
+}
+ol,ul{
+    list-style: none;
+}
+body, button, input, select, textarea {
+    font: 12px Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+}
+.b-warp{
+    width:1414px;
+    margin:0 auto;
+}
+
+.rank-container{
+    border:0px;
+    margin: 20px 0px;
+    border-radius: 4px;
+}
+
+li.active{
+    color: #00a1d6;
+    height: 38px;
+    border-bottom: 2px solid #00a1d6;
+}
+
+.rank-menu li:first-child{
+    margin-left:0px;
+}
+.rank-menu, .rank-menu li {
+    text-align: center;
+}
+.rank-menu li{
+    width:115px;
+    height:40px;
+    font-size: 18px;
+    line-height: 25px;
+    padding: 0 12px;
+    margin-left: 52px;
+    display: inline-block;
+    cursor:pointer
+}
+
+.rank-menu li{
+    text-align: center;
+}
+
+.rank-icon{
+    display: inline-block;
+    width: 30px;
+    height:30px;
+    vertical-align: middle;
+    background:url("../asserts/icons.png") no-repeat;
+}
+.rank-icon.all{
+    background-position: -83px -979px;
+}
+.rank-icon.origin{
+    background-position: -83px -1041px;
+}
+.rank-icon.bangumi{
+    background-position: -83px -1107px;
+}
+
+.rank-icon.cinema{
+    background-position: -146px -1555px;
+}
+.rank-icon.rookie{
+    background-position: -83px -1170px;
+}
+
+.rank-tab-wrap {
+    background: #edf2f9;
+    padding: 0;
+    border-radius: 4px;
+    clear: both;
+    height: 40px;
+}
+
+.rank-tab-wrap .rank-tab{
+    float: left;
+}
+
+.rank-tab-wrap .rank-tab li{
+    float: left;
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.rank-type-dropdown {
+    float: right;
+}
+.rank-tab-wrap .rank-dropdown {
+    margin-top: 8px;
+    margin-right: 10px;
+}
+.bili-dropdown {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #fff;
+    cursor: default;
+    padding: 0 7px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #ccd0d7;
+    border-radius: 4px;
+}
+.selected {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.bili-dropdown .dropdown-list {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccd0d7;
+    border-top: 0;
+    left: -1px;
+    top: 22px;
+    z-index: 10;
+    display: none;
+    border-radius: 0 0 4px 4px;
+}
+.dropdown-list .dropdown-item {
+    cursor: pointer;
+    margin: 0;
+    padding: 3px 7px;
+}
+
+.bili-dropdown .icon-arrow-down {
+    background-position: -475px -157px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 12px;
+    height: 6px;
+    margin-left: 5px;
+    margin-top: -1px;
+}
+
+.icon {
+    display: inline-block;
+    background:url("../asserts/icons.png") no-repeat;
+}

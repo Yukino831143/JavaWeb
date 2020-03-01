@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- <meta http-equiv="Access-Control-Allow-Origin" content="*" /> -->
+<title>Insert title here</title>
+</head>
+<body>
+2333
+	<script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+	<script>
+
+    /* $.get("https://api.bilibili.com/x/web-interface/ranking?rid=0&day=3&type=1&arc_type=0",function(data,status){
+    	console.log("data::::"+data);
+    	console.log("status::::"+status);
+    });  */
+    
+    /* $.ajax({
+        url: 'https://api.bilibili.com/x/web-interface/ranking?rid=0&day=3&type=1&arc_type=0',
+        type: 'get',
+        dataType: 'jsonp',  // 请求方式为jsonp
+         crossDomain: true,
+    	 success: function(data) {},
+        data: {}
+    }); */
+    
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+
+    // 传参并指定回调执行函数为onBack
+    script.src = 'https://api.bilibili.com/x/web-interface/ranking?rid=0&day=3&type=1&arc_type=0&callback=onBack';
+    document.head.appendChild(script);
+
+    // 回调执行函数
+    function onBack(res) {
+        alert(JSON.stringify(res));
+    }
+
+    
+    
+    
+	</script>
+</body>
+</html>
