@@ -77,7 +77,9 @@
 				</div>
 				<div class="rank-list-wrap">
 					<ul class="rank-list">
-						<li class="rank-item">
+						
+						<#list 1..10 as i>
+							<li class="rank-item">
 							<div class="num">1</div>
 							<div class="content">
 								<div class="img">
@@ -109,9 +111,9 @@
 								</div>
 							</div>
 						</li>
-						
-						
+						</#list>
 					</ul>
+					
 				</div>
 			</div>
 		</div>

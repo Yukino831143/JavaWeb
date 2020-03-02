@@ -2,6 +2,9 @@
     padding: 0px;
     margin: 0px;
 }
+i {
+    font-style: italic;
+}
 ul{
     display:block;
 }
@@ -151,4 +154,252 @@ li.active{
 .icon {
     display: inline-block;
     background:url("../asserts/icons.png") no-repeat;
+}
+
+.rank-list-head {
+    padding: 15px 0;
+}
+
+.rank-list-head .rank_tips {
+    padding: 7px 0;
+    background-color: #edf2f9;
+    border-radius: 4px;
+}
+
+.rank-list-head .rank_tips .b-icon-tip {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px;
+    background: url("../asserts/icons_1.png") -52px -27px no-repeat;
+}
+.rank-list-head .rank_tips .tip-txt {
+    vertical-align: middle;
+}
+
+.rank-item {
+    transition: .2s;
+    overflow: hidden;
+    border-bottom: 1px solid #e5e9ef;
+    position: relative;
+}
+
+.rank-item .num {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    line-height: 70px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    color: #b8c0cc;
+    font-family: simhei;
+}
+
+.rank-item .content {
+    padding: 20px 0 0 70px;
+    overflow: hidden;
+}
+.rank-item .content .img {
+    position: relative;
+    float: left;
+}
+.rank-item .content .img a {
+    display: inline-block;
+}
+a, a:hover, ins {
+    text-decoration: none;
+}
+a {
+    transition: color .2s;
+}
+
+.rank-item .content .img .cover {
+    width: 114px;
+    height: 70px;
+}
+
+.lazy-img {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABHCAMAAAB4UkqjAAAAh1BMV…cJ5cRyMlHrbkdG5c/5r82fYqt+K/iR89m2JrP9PEZyI80PsPxVT0P3FAEAAAAASUVORK5CYII=) 50% no-repeat;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.rank-item .content .img .cover img {
+    border-radius: 4px;
+}
+
+.lazy-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+fieldset, img {
+    border: none;
+    vertical-align: middle;
+}
+.rank-item .content .img .w-later {
+    display: none;
+}
+
+.watch-later-trigger {
+    display: none;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 6px;
+    bottom: 4px;
+    cursor: pointer;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAABT0lEQ…HyYYxBKXU9+p5Grybg4m1Hk9Bar4Ee4JC0JWeixOhprdffE/1yRW/TLMYAAAAASUVORK5CYII=);
+}
+
+.rank-item .content .info {
+    padding-bottom: 20px;
+    margin-left: 130px;
+    height: 70px;
+    position: relative;
+    display: block;
+}
+
+.rank-item .content .info .title {
+    height: 20px;
+    line-height: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #222;
+    transition: .3s;
+    display: inline-block;
+}
+.rank-item .content .info .detail {
+    margin-top: 20px;
+    color: #99a2aa;
+}
+
+.rank-item .content .info .detail .data-box {
+    width: 80px;
+    margin-right: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.rank-item .content .info .detail .b-icon.play {
+    background-position: -282px -90px;
+}
+.rank-item .content .info .detail .b-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: url(//static.hdslb.com/images/base/icons.png) no-repeat;
+}
+.rank-item .content .info .detail .data-box {
+    width: 80px;
+    margin-right: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.rank-item .content .info .detail .b-icon.view {
+    background-position: -282px -218px;
+}
+.rank-item .content .info .detail .b-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: url("../asserts/icons.png") no-repeat;
+}
+
+.rank-item .content .info .detail a {
+    color: #99a2aa;
+}
+
+.rank-item .content .info .detail .data-box {
+    width: 80px;
+    margin-right: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.rank-item .content .info .detail .b-icon.author {
+    background-position: -282px -154px;
+}
+
+.rank-item .content .info .detail .b-icon {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: text-top;
+    background: url("../asserts/icons.png") no-repeat;
+    
+}
+
+.rank-item .content .info .pts {
+    height: 20px;
+    color: #b8c0cc;
+    line-height: 20px;
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    text-align: center;
+}
+
+.rank-item .content .info .pts div {
+    color: #00a1d6;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+.other {
+    height: 52px;
+    border-top: 1px solid #e5e9ef;
+    margin-left: 130px;
+    font-size: 12px;
+    overflow: hidden;
+    font-size: 14px;
+    transition: height .3s;
+}
+
+.other .other-link {
+    margin-right: 20px;
+    font-weight: 700;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 640px;
+    display: block;
+    text-overflow: ellipsis;
+    padding: 15px 0;
+}
+.other .other-link .title {
+    color: #222;
+    margin-right: 10px;
+    transition: .2s;
+}
+.other span {
+    color: #99a2aa;
+    margin-right: 5px;
+}
+.other span {
+    color: #99a2aa;
+    margin-right: 5px;
+}
+.other strong {
+    color: #00a1d6;
+}
+strong {
+    font-weight: bold;
+}
+.more-data {
+    display: block;
+    margin: 0 0 18px 130px;
+    font-size: 14px;
+    color: #00a1d6;
+    transition: .2s;
 }
