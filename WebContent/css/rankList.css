@@ -294,7 +294,7 @@ fieldset, img {
     margin-right: 5px;
     display: inline-block;
     vertical-align: text-top;
-    background: url(//static.hdslb.com/images/base/icons.png) no-repeat;
+    background: url("../asserts/icons.png") no-repeat;
 }
 .rank-item .content .info .detail .data-box {
     width: 80px;

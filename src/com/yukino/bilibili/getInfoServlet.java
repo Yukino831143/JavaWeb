@@ -33,7 +33,7 @@ public class getInfoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String jsonFile = "/Users/yukino/Desktop/git_test/bilibili/JavaWeb/WebContent/json/Java2python.json";//ÔİÊ±ÊÇ¾ø¶ÔÂ·¾¶£¬Ïà¶ÔÂ·¾¶ÔÚservlet Óë µ¥JavaÏà¶Ô²»Í¬
+		String jsonFile = "/Users/yukino/Desktop/git_test/bilibili/JavaWeb/WebContent/json/Java2python.json";//æš‚æ—¶æ˜¯ç»å¯¹è·¯å¾„ï¼Œç›¸å¯¹è·¯å¾„åœ¨servlet ä¸ å•Javaç›¸å¯¹ä¸åŒ
 		String keyword= request.getParameter("upName");
 		String absolutePath=null;
 		System.out.println("keyword:"+keyword);
@@ -45,13 +45,13 @@ public class getInfoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		System.out.println("absolutePath:"+absolutePath);
-		System.out.println("python¿ªÊ¼");
+		System.out.println("pythonå¼€å§‹");
 		String info = temp.spiderData("/Users/yukino/Desktop/git_test/bilibili/JavaWeb/WebContent/json/Java2python.json");
 		response.getWriter().println(info);
 		System.out.println(info);
-		System.out.println("python½áÊø");
-//		UpInfo up = JSON.parseObject(info,UpInfo.class);//·´ĞòÁĞ¹¹³É¶ÔÏó
-//		System.out.println(up);
+		System.out.println("pythonç»“æŸ");
+		
+
 		
 		
 	}

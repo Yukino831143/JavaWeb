@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="no-referrer">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/rankList.css">
 </head>
@@ -72,13 +73,13 @@
 				<div class="rank-list-head">
 					<div class="rank_tips">
 						<i class="b-icon-tip"></i>
-						<span class="tip-txt">统计所有投稿在 2020年02月28日 - 2020年03月02日 的数据综合得分，每日更新一次</span>
+						<span class="tip-txt">${test!"eee"}</span>
 					</div>
 				</div>
 				<div class="rank-list-wrap">
 					<ul class="rank-list">
 						
-						<#list 1..10 as i>
+						<#list 1..100 as i>
 							<li class="rank-item">
 							<div class="num">1</div>
 							<div class="content">
@@ -160,14 +161,14 @@
 				var value = $(this).attr("value");
 				var text = $(this).text();
 				selected1.text(text);
-				rankRouteParams.arc_type = value;
+				rankRouteParams.arc_type = parseInt(value);
 				for(var j=0;j<arg_type.length;j++){
 					list_li = $(".dropdown-list .dropdown-item:eq(\""+j+"\")");
 					list_li.css("display","inline");
 				}
 				$(this).css("display","none");
-				console.log(rankRouteParams.arc_type);
-				console.log(rankRouteParams.day);
+				console.log("arc_type="+rankRouteParams.arc_type+";"+"day="+rankRouteParams.day);
+				send2BackEnd();
 			});
 		}
 
@@ -180,14 +181,14 @@
 				var value = $(this).attr("value");
 				var text = $(this).text();
 				selected2.text(text);
-				rankRouteParams.day = value;
+				rankRouteParams.day = parseInt(value);
 				for(var j=arg_type.length;j<type_day.length;j++){
 					list_li = $(".dropdown-list .dropdown-item:eq(\""+j+"\")");
 					list_li.css("display","inline");
 				}
 				$(this).css("display","none");
-				console.log(rankRouteParams.arc_type);
-				console.log(rankRouteParams.day);
+				console.log("arc_type="+rankRouteParams.arc_type+";"+"day="+rankRouteParams.day);
+				send2BackEnd();
 			});
 		}
 		/*投稿排序 和 日排序*/
@@ -221,6 +222,7 @@
 					
 				}
 				console.log(value+"="+rankRouteParams.type);
+				send2BackEnd();
 			});
 			
 		}
@@ -234,24 +236,67 @@
 			ranktabLis.eq(i).on("click",function(){
 				$(".rank-tab>.active").removeClass("active");
 				$(this).addClass("active");
-				rankRouteParams.rid = $(this).attr("value");
+				rankRouteParams.rid = parseInt($(this).attr("value"));
 				console.log("rid"+"="+rankRouteParams.rid);
+				send2BackEnd();
 			});
 		}
 		//全站、动画、游戏
 
+		function send2BackEnd(){
+			$.ajax({
+				"url":"/bilibili/ranklist",
+				"type":"get",
+				"data":rankRouteParams,
+				"dataType":"json",
+				"success":function(json){
+					console.log(json);
+					updateData(json);
+				}
+			});
+		}
+		function updateData(json){
+			$(".rank-list-head .rank_tips .tip-txt").text(json.data.note);
+			for(var i=0;i<json.data.list.length;i++){
+				$(".rank-item .content .info .title:eq(\""+i+"\")").text(json.data.list[i].title);
+				var authorHtml= "<i class='b-icon author'></i>" + json.data.list[i].author;
+				var viewHtml= "<i class='b-icon view'></i>" + json.data.list[i].video_review;
+				var playHtml= "<i class='b-icon play'></i>" + json.data.list[i].play; 
+				$(".rank-item .content .info .detail .data-box:eq(\""+i*3+"\")").html(playHtml);//播放量
+				$(".rank-item .content .info .detail .data-box:eq(\""+(i*3+1)+"\")").html(viewHtml);//评论
+				$(".rank-item .content .info .detail .data-box:eq(\""+(i*3+2)+"\")").html(authorHtml);//作者
+
+
+				$(".rank-item .content .info .pts div:eq(\""+i+"\")").text(json.data.list[i].pts);//评分
+
+				$(".rank-item .content .img .cover img:eq(\""+i+"\")").attr("src",json.data.list[i].pic);//封面
+				$(".rank-item .content .img a:eq(\""+i+"\")").attr("href","https://www.bilibili.com/video/av"+json.data.list[i].aid);//封面链接指向	
+				$(".rank-item .content .info .title:eq(\""+i+"\")").attr("href","https://www.bilibili.com/video/av"+json.data.list[i].aid);//标题链接指向
+				if("others" in json.data.list[i]){
+					
+					if("title" in json.data.list[i].others[0]){
+						$(".other .other-link .title:eq(\""+i+"\")").text(json.data.list[i].others[0].title);
+					}
+					if("pts" in json.data.list[i].others[0]){
+						$(".other strong:eq(\""+i+"\")").text(json.data.list[i].others[0].pts);
+					}					
+				}								
+			}
+			
+		}
+		
+		$(document).ready(send2BackEnd());
+		
+
+		
+		
+		
 		
 
 
 		
 		
-		
-		
-
-
-		
-		
-		
+	console.log(rankRouteParams);	
 	</script>
 </body>
 </html>
