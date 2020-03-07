@@ -179,8 +179,12 @@ function updateData(json){
 }
 
 function fillList(json){
-    if("data" in json){
+    if("data" in json){//全站榜 原创榜 新人榜
         for(var i=0;i<json.data.list.length;i++){
+            $(".rank-item .content .info .pgc-info").remove();//删除新番榜 影视榜添加的更新集数说明
+            $(".other-panel:eq(\""+i+"\")").css("display","inline");
+            $(".lazy-img img:eq(\""+i+"\")").css({"width":"100%","height":"100%"});
+            $(".rank-item:eq(\""+i+"\")").css("display","inline");//以上两条是针对新番榜和影视榜只有50条记录的，隐藏信息恢复和头像正常显示
             $(".rank-item .num:eq(\""+i+"\")").text(i+1);//排名
             $(".rank-item .content .info .title:eq(\""+i+"\")").text(json.data.list[i].title);
             var authorHtml= "<i class='b-icon author'></i>" + json.data.list[i].author;
@@ -208,29 +212,56 @@ function fillList(json){
                 }					
             }								
         }
-    }else{
+    }else{ //新番榜 影视榜
         
-        for(var i=0;i<json.result.list.length;i++){
-            $(".rank-item .num:eq(\""+i+"\")").text(i+1);//排名
-            $(".rank-item .content .info .title:eq(\""+i+"\")").text(json.result.list[i].title);
-            var playHtml= "<i class='b-icon play'></i>" + dataHandler(json.result.list[i].stat.view); //播放量
-            var viewHtml= "<i class='b-icon view'></i>" + dataHandler(json.result.list[i].stat.danmaku);//弹幕数
-            var followHtml= "<i class='fav'></i>" + dataHandler(json.result.list[i].stat.follow);//追番人数
-            
-            
-            $(".rank-item .content .info .detail .data-box:eq(\""+i*3+"\")").html(playHtml);//播放量
-            $(".rank-item .content .info .detail .data-box:eq(\""+(i*3+1)+"\")").html(viewHtml);//评论
-            $(".rank-item .content .info .detail .data-box:eq(\""+(i*3+2)+"\")").html(followHtml);//作者
-    
-    
-            $(".rank-item .content .info .pts div:eq(\""+i+"\")").text(json.result.list[i].pts);//评分
-    
-            $(".rank-item .content .img .cover img:eq(\""+i+"\")").attr("src",json.result.list[i].cover+"@90w_120h.webp");//封面
-            $(".lazy-img img").css("width","auto");
-            $(".lazy-img img").css("height","auto");
+        for(var i=0;i<100;i++){
+            if(i<json.result.list.length){
+                $(".rank-item .num:eq(\""+i+"\")").text(i+1);//排名
+                $(".rank-item .content .info .title:eq(\""+i+"\")").text(json.result.list[i].title);
+                var playHtml= "<i class='b-icon play'></i>" + dataHandler(json.result.list[i].stat.view); //播放量
+                var viewHtml= "<i class='b-icon view'></i>" + dataHandler(json.result.list[i].stat.danmaku);//弹幕数
+                var followHtml= "<i class='fav'></i>" + dataHandler(json.result.list[i].stat.follow);//追番人数
+                
+                
+                $(".rank-item .content .info .detail .data-box:eq(\""+i*3+"\")").html(playHtml);//播放量
+                $(".rank-item .content .info .detail .data-box:eq(\""+(i*3+1)+"\")").html(viewHtml);//评论
+                $(".rank-item .content .info .detail .data-box:eq(\""+(i*3+2)+"\")").html(followHtml);//作者
+                
+                var cssJson = {
+                   "width": "12px",
+                   "height": "12px",
+                   "margin-right" : "5px",
+                   "display" : "inline-block",
+                   "vertical-align" : "text-top",
+                   "background-image" : "url(\"asserts/bangumi-zf-icon.png\")",//注意，这个属性是写入的ftl中的html代码，因此想对路径是ftl而非js
+                   "background-repeat" : "no-repeat",
+                };
+                $(".rank-item .content .info .detail .data-box .fav:eq(\""+i+"\")").css(cssJson);
+                
+        
+                $(".rank-item .content .info .pts div:eq(\""+i+"\")").text(json.result.list[i].pts);//评分
+        
+                $(".rank-item .content .img .cover img:eq(\""+i+"\")").attr("src",json.result.list[i].cover+"@90w_120h.webp");//封面
+                $(".lazy-img img").css("width","auto");
+                $(".lazy-img img").css("height","auto");
 
-            $(".rank-item .content .img a:eq(\""+i+"\")").attr("href",json.result.list[i].url);//封面链接指向	
-            $(".rank-item .content .info .title:eq(\""+i+"\")").attr("href",json.result.list[i].url);//标题链接指向
+                $(".rank-item .content .img a:eq(\""+i+"\")").attr("href",json.result.list[i].url);//封面链接指向	
+                $(".rank-item .content .info .title:eq(\""+i+"\")").attr("href",json.result.list[i].url);//标题链接指向
+                $(".other-panel:eq(\""+i+"\")").css("display","none");//多余的other栏
+
+                var pgcInfo = "<div class='pgc-info'>"+json.result.list[i].new_ep.index_show+"</div>";
+                // console.log(233);
+                // console.log($(".rank-item .content .info .pgc-info").length);
+                if($(".rank-item .content .info .pgc-info").length<json.result.list.length){ //避免重复添加
+                    $(".rank-item .content .info .title:eq(\""+i+"\")").after(pgcInfo);
+                    $(".rank-item .content .info .pgc-info:eq(\""+i+"\")").css("color","#99a2aa");
+                }
+                
+            }else{//新番榜和影视榜只有前五十榜单，所以隐藏一部分
+                $(".lazy-img img:eq(\""+i+"\")").css({"width":"100%","height":"100%"});
+                $(".rank-item:eq(\""+i+"\")").css("display","none");
+            }
+            
             							
         }
     }

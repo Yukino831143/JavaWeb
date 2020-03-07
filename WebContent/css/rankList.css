@@ -285,6 +285,7 @@ fieldset, img {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+
 .rank-item .content .info .detail .b-icon.play {
     background-position: -282px -90px;
 }
@@ -313,8 +314,16 @@ fieldset, img {
     display: inline-block;
     vertical-align: text-top;
     background: url("../asserts/icons.png") no-repeat;
+    
 }
-
+.rank-item .content .info .detail .fav {
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    background: url("../asserts/bangumi-zf-icon.png") no-repeat;
+}
 .rank-item .content .info .detail a {
     color: #99a2aa;
 }
