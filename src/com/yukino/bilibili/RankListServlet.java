@@ -33,9 +33,17 @@ public class RankListServlet extends HttpServlet {
 		String arc_type = request.getParameter("arc_type");
 		String day = request.getParameter("day");
 		String season_type = request.getParameter("season_type");
-		String params = "rid="+rid+"&day="+day+"&type="+type+"&arc_type="+arc_type;
+		String params = null;
+		String url = null;
+		if(type.equals("4") || type.equals("5")) {	
+			params = "day="+day+"&season_type="+season_type;
+			url = "https://api.bilibili.com/pgc/web/rank/list";
+		}else {
+			params = "rid="+rid+"&day="+day+"&type="+type+"&arc_type="+arc_type;
+			url = "https://api.bilibili.com/x/web-interface/ranking";
+		}
 		System.out.println(params);
-		String send2FontEnd = getData.sendGet("https://api.bilibili.com/x/web-interface/ranking",params);
+		String send2FontEnd = getData.sendGet(url,params);
 		System.out.println(send2FontEnd);
 		response.getWriter().println(send2FontEnd);
 //		request.getServletContext().setAttribute("pageData", send2FontEnd);
