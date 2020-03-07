@@ -149,37 +149,16 @@ function updateData(json){
         fillList(json);
         
     }
-    
-    // for(var i=0;i<json.data.list.length;i++){
-    //     $(".rank-item .content .info .title:eq(\""+i+"\")").text(json.data.list[i].title);
-    //     var authorHtml= "<i class='b-icon author'></i>" + json.data.list[i].author;
-    //     var viewHtml= "<i class='b-icon view'></i>" + dataHandler(json.data.list[i].video_review);
-    //     var playHtml= "<i class='b-icon play'></i>" + dataHandler(json.data.list[i].play); 
-    //     $(".rank-item .content .info .detail .data-box:eq(\""+i*3+"\")").html(playHtml);//播放量
-    //     $(".rank-item .content .info .detail .data-box:eq(\""+(i*3+1)+"\")").html(viewHtml);//评论
-    //     $(".rank-item .content .info .detail .data-box:eq(\""+(i*3+2)+"\")").html(authorHtml);//作者
 
-
-    //     $(".rank-item .content .info .pts div:eq(\""+i+"\")").text(json.data.list[i].pts);//评分
-
-    //     $(".rank-item .content .img .cover img:eq(\""+i+"\")").attr("src",json.data.list[i].pic);//封面
-    //     $(".rank-item .content .img a:eq(\""+i+"\")").attr("href","https://www.bilibili.com/video/av"+json.data.list[i].aid);//封面链接指向	
-    //     $(".rank-item .content .info .title:eq(\""+i+"\")").attr("href","https://www.bilibili.com/video/av"+json.data.list[i].aid);//标题链接指向
-    //     if("others" in json.data.list[i]){
-            
-    //         if("title" in json.data.list[i].others[0]){
-    //             $(".other .other-link .title:eq(\""+i+"\")").text(json.data.list[i].others[0].title);
-    //         }
-    //         if("pts" in json.data.list[i].others[0]){
-    //             $(".other strong:eq(\""+i+"\")").text(json.data.list[i].others[0].pts);
-    //         }					
-    //     }								
-    // }
     
 }
 
 function fillList(json){
     if("data" in json){//全站榜 原创榜 新人榜
+        $(".rank-tab-wrap .rank-tab li").css("display","inline");//全站，动画栏显示恢复(新番榜和影视榜的隐藏了)
+        $(".rank-tab-wrap .rank-tab li:eq(\""+0+"\")").text("全站");
+        $(".rank-tab-wrap .rank-tab li:eq(\""+1+"\")").text("动画");
+        $(".rank-tab-wrap .rank-tab li:eq(\""+2+"\")").text("国创相关");
         for(var i=0;i<json.data.list.length;i++){
             $(".rank-item .content .info .pgc-info").remove();//删除新番榜 影视榜添加的更新集数说明
             $(".other-panel:eq(\""+i+"\")").css("display","inline");
@@ -214,6 +193,35 @@ function fillList(json){
         }
     }else{ //新番榜 影视榜
         
+        //新番榜->番剧 国产动画
+        //影视榜->纪录片，电影，电视剧
+        var rankTabLi = $(".rank-tab-wrap .rank-tab li");
+       for(var i = 0;i<rankTabLi.length;i++){
+           if(i==0){
+               if(rankRouteParams.season_type == 1){
+                   $(".rank-tab-wrap .rank-tab li:eq(\""+i+"\")").text("番剧");
+                   
+               }else if(rankRouteParams.season_type == 3){
+                   $(".rank-tab-wrap .rank-tab li:eq(\""+i+"\")").text("纪录片");
+               }
+               continue;   
+           }else if(i == 1){
+               if(rankRouteParams.season_type == 1){
+                   $(".rank-tab-wrap .rank-tab li:eq(\""+i+"\")").text("国产动画");
+               }else if(rankRouteParams.season_type == 3){
+                   $(".rank-tab-wrap .rank-tab li:eq(\""+i+"\")").text("电影");
+               } 
+               continue;
+           }else if(i==2 && rankRouteParams.season_type == 3){
+            $(".rank-tab-wrap .rank-tab li:eq(\""+i+"\")").css("display","inline");
+               $(".rank-tab-wrap .rank-tab li:eq(\""+i+"\")").text("电视剧");
+               continue;
+           }
+           $(".rank-tab-wrap .rank-tab li:eq(\""+i+"\")").css("display","none");
+
+       }
+
+
         for(var i=0;i<100;i++){
             if(i<json.result.list.length){
                 $(".rank-item .num:eq(\""+i+"\")").text(i+1);//排名
@@ -256,6 +264,7 @@ function fillList(json){
                     $(".rank-item .content .info .title:eq(\""+i+"\")").after(pgcInfo);
                     $(".rank-item .content .info .pgc-info:eq(\""+i+"\")").css("color","#99a2aa");
                 }
+                
                 
             }else{//新番榜和影视榜只有前五十榜单，所以隐藏一部分
                 $(".lazy-img img:eq(\""+i+"\")").css({"width":"100%","height":"100%"});
