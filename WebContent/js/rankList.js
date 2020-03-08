@@ -37,7 +37,7 @@ for(var i=0;i<arg_type.length;i++){
     temp.attr("value",arg_type[i]);
     //temp.on("click",{"selected":selected1,"object":temp},callback)
     temp.on("click",function(){
-        console.log($(this));
+        //console.log($(this));
         var value = $(this).attr("value");
         var text = $(this).text();
         selected1.text(text);
@@ -47,7 +47,7 @@ for(var i=0;i<arg_type.length;i++){
             list_li.css("display","inline");
         }
         $(this).css("display","none");
-        console.log("arc_type="+rankRouteParams.arc_type+";"+"day="+rankRouteParams.day);
+        // console.log("arc_type="+rankRouteParams.arc_type+";"+"day="+rankRouteParams.day);
         send2BackEnd();
     });
 }
@@ -56,7 +56,7 @@ for(var i=arg_type.length;i<type_day.length;i++){
     temp.attr("value",type_day[i]);
     //temp.on("click",{"selected":selected1,"object":temp},callback)
     temp.on("click",function(){
-        console.log($(this));
+        // console.log($(this));
         var value = $(this).attr("value");
         var text = $(this).text();
         selected2.text(text);
@@ -66,7 +66,7 @@ for(var i=arg_type.length;i<type_day.length;i++){
             list_li.css("display","inline");
         }
         $(this).css("display","none");
-        console.log("arc_type="+rankRouteParams.arc_type+";"+"day="+rankRouteParams.day);
+        // console.log("arc_type="+rankRouteParams.arc_type+";"+"day="+rankRouteParams.day);
         send2BackEnd();
     });
 }
@@ -102,6 +102,8 @@ for(var i=0;i<menu_lis.length;i++){
                 alert("出错了");
             
         }
+        console.log("======");
+       paramInit(rankRouteParams.type);
         send2BackEnd();
     });
     
@@ -119,7 +121,7 @@ for(var i=0;i<ranktabLis.length;i++){
         $(".rank-tab>.active").removeClass("active");
         $(this).addClass("active");
         rankRouteParams.rid = parseInt($(this).attr("value"));
-        console.log("rid"+"="+rankRouteParams.rid);
+        //console.log("rid"+"="+rankRouteParams.rid);
         send2BackEnd();
     });
 }
@@ -133,7 +135,7 @@ function send2BackEnd(){
         "data":rankRouteParams,
         "dataType":"json",
         "success":function(json){
-            console.log(json);
+            //console.log(json);
             updateData(json);
         }
     });
@@ -283,6 +285,29 @@ function dataHandler(data){
     }else{
         return (data/10000).toFixed(1) + "万";
     }
+}
+function paramInit(type){
+    rankRouteParams.rid = 0;
+    rankRouteParams.arc_type = 0;
+    rankRouteParams.day = 3;
+    rankRouteParams.season_type =1;
+    $(".rank-type-dropdown  .rank-dropdown .selected:eq(\""+0+"\")").text("全部投稿");
+    $(".rank-type-dropdown  .rank-dropdown .selected:eq(\""+1+"\")").text("三日榜");
+    $(".dropdown-list .dropdown-item").css("display","inline");
+    if(type==1 || type==2 || type==3){
+        console.log("display","inline");
+        //$(".rank-type-dropdown  .rank-dropdown:eq(\""+0+"\")").css("display","inline");
+        $(".rank-type-dropdown  .rank-dropdown:eq(\""+0+"\")").removeAttr("style");//直接移除style属性，不会出现排版问题
+        $(".dropdown-list .dropdown-item:eq(\""+0+"\")").css("display","none");
+        $(".dropdown-list .dropdown-item:eq(\""+3+"\")").css("display","none");
+    }else if(type==4 || type==5){
+        $(".rank-type-dropdown  .rank-dropdown:eq(\""+0+"\")").css("display","none");//投稿栏隐藏      
+        $(".dropdown-list .dropdown-item:eq(\""+2+"\")").css("display","none");
+        $(".dropdown-list .dropdown-item:eq(\""+3+"\")").css("display","none");
+        $(".dropdown-list .dropdown-item:eq(\""+5+"\")").css("display","none");
+    }
+    
+    
 }
 
 $(document).ready(send2BackEnd());
